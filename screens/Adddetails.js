@@ -44,7 +44,7 @@ const Adddetails = ({ route, navigation }) => {
   // const [name, setName] = useState();
   const [phnumber, setPhnumber] = useState("123");
   const [address, setAddress] = useState("qwerty");
-  // const [email, setEmail] = useState();
+
   const [datePicker, setDatePicker] = useState(false);
   const [kg, setKg] = useState("55");
   const [ht, setHt] = useState("166");

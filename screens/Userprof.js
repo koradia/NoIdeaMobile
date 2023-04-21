@@ -47,7 +47,7 @@ const Userprof = ({navigation}) => {
   const onlogout=()=>{
     AsyncStorage.removeItem('JWT');
     AsyncStorage.removeItem('PID');
-    //AsyncStorage.clear();
+    AsyncStorage.clear();
    try{ 
     //navigation.navigate('LoadingScreen');
      navigation.navigate('LoginScreen');
@@ -240,6 +240,11 @@ const Userprof = ({navigation}) => {
           <TouchableOpacity onPress={onlogout}>
             <Button style={{ borderWidth: 1, borderColor: "black" }}>
               Log out
+            </Button>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate("Resetpass")} >
+            <Button style={{ borderWidth: 1, borderColor: "black" }}>
+              Reset Password
             </Button>
           </TouchableOpacity>
         </View>

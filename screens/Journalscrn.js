@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Appbartab from "../components/Appbartab";
 import FormInput from "../components/FormInput";
 import { Button, Card, Paragraph, TextInput } from "react-native-paper";
@@ -9,33 +9,59 @@ import Noteslist from "../components/Noteslist";
 import Bottombar from "../components/Bottombar";
 import axios from "axios";
 import { Url, getToken } from "../components/config";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const{width,height} =Dimensions.get('screen');
 
-const Journalscrn = () => {
+const Journalscrn = ({navigation}) => {
 
    
 
     const [text,setText] =useState('');
+    const [notelist, setNotelist]= useState([]);
 
     const onaddhandle=async(e)=>{
         if(text=='') alert('please write something to add')
         else {
             e.preventDefault();
             const token= await getToken();
+            const pid = await AsyncStorage.getItem('PID');
             const result= await axios.post(Url + "/journal/save" ,
             {
-              text
+              pid:pid,
+              journaltext:text
             },{headers:{
               "Authorization": token,
             }}
-            
             ).catch((e)=>console.log(e))
             // addto 
+            navigation.navigate('Journalscrn');
             console.log('added');
         }
         
     }
+
+    useEffect(()=>{
+      const onscreen=async(e)=>{
+        const token =await getToken();
+        try{
+          const res= await axios.post(Url + "/get/alljournal",
+          {},{headers:{
+            "Authorization": token,
+          }}
+          )
+          //console.log(res.data);
+          setNotelist(res.data);
+          console.log(notelist);
+
+        }
+        catch(e){
+          console.log(e);
+        }
+
+      }
+      onscreen();
+    },[])
 
   return (
     <View style={{height:height}}>
@@ -71,7 +97,15 @@ const Journalscrn = () => {
           Add
         </Button>
       </View>
-      <Noteslist />
+        <ScrollView>
+        <View style={{ alignItems: "center" }}>
+          {notelist.map((ele) => (
+            <Noteslist date={ele.filledwhen} text={ele.journaltext} />
+            
+          ))}
+          <Text>{"\n"}</Text>
+        </View>
+      </ScrollView>
       <View style={{marginTop:160}} >
       <Bottombar /></View> 
     </View>

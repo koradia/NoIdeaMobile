@@ -43,7 +43,7 @@ const LoginScreen = ({ navigation }) => {
     if (result && result.status == 200) {
       const value = JSON.stringify(result.data.token);
       const id = JSON.stringify(result.data.id);
-      console.log(result.data)
+      console.log(result.data);
       try {
         await AsyncStorage.setItem("PID", id);
         await AsyncStorage.setItem("JWT", value);
@@ -51,12 +51,13 @@ const LoginScreen = ({ navigation }) => {
         console.log(JSON.parse(res) + "from login");
         //navigation.navigate('Dashboard');
       } catch (err) {
-        console.log("qwert");
+        console.log(err);
       }
       const token= await getToken();
       console.log(token);
       
-      
+      setEmail("");
+      setPassword("");
       navigation.navigate('Dashboard');
     
     } else {
@@ -88,7 +89,7 @@ const LoginScreen = ({ navigation }) => {
         imageStyle={{
           width: width,
           // opacity: 0.25,
-          height: height * 1,
+          height: height * 1.2,
           borderRadius: 5,
         }}
       >
@@ -135,6 +136,12 @@ const LoginScreen = ({ navigation }) => {
               iconType="lock"
               iconType1="eye"
             />
+          </View>
+
+          <View>
+            <TouchableOpacity onPress={()=>navigation.navigate('Forgotpass')}>
+              <Text style={{textAlign:'right', marginRight:40, marginTop:10, color:'maroon'}}>Forgot password?</Text>
+            </TouchableOpacity>
           </View>
 
           <View style={{ paddingTop: 30, alignItems: "center" }}>

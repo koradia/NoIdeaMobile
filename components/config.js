@@ -8,7 +8,7 @@ export const getToken=async()=>{
     // console.log(Token);
     return Token;
 }
-export const Url="https://b73a-103-156-19-229.ngrok-free.app";
+export const Url="https://c4bb-119-161-98-68.ngrok-free.app";
 
 
 

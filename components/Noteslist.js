@@ -1,29 +1,22 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Paragraph } from 'react-native-paper';
 import { Dimensions } from 'react-native';
+import axios from 'axios';
+import { Url, getToken } from './config';
 
 const{width,height} =Dimensions.get('screen');
 
-const Noteslist = () => {
+const Noteslist = (props) => {
 
-    const arr =[['qwertyqwer', '12-08-2021'], ['asdfghj', '28-02-2065'],['zxcvbnm', '78-62-2025']];
+    const {date, text}=props;
 
-    // useeffect 
-    useEffect(()=>{
-      const onscreen=()=>{
-
-      }
-
-
-      onscreen();
-    })
+   
+  
 
   return (
-    <View>
-    <ScrollView>
+
       <View style={{ alignItems: "center" }}>
-          {arr.map((e) => (
             <Card
               style={{
                 margin: 10,
@@ -36,15 +29,13 @@ const Noteslist = () => {
             >
               
               <Card.Content>
-                <Paragraph>{e[0]}</Paragraph>
-                <Text style={{textAlign:'right', color:'grey', fontSize:13}}>{e[1]}</Text>
+                <Paragraph>{text}</Paragraph>
+                <Text style={{textAlign:'right', color:'grey', fontSize:13}}>{date}</Text>
               </Card.Content>
             </Card>
-          ))}
+          
           <Text>{"\n"}</Text>
         </View>
-      </ScrollView>
-      </View>
   )
 }
 

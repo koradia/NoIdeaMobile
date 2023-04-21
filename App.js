@@ -27,6 +27,8 @@ import Editprof from './screens/Editprof';
 import Journalscrn from './screens/Journalscrn';
 import Videoscrn from './screens/Videoscrn';
 import Audioscrn from './screens/Audioscrn';
+import Forgotpass from './screens/Forgotpass';
+import Resetpass from './screens/Resetpass';
 
 const Stack = createNativeStackNavigator();
 
@@ -70,6 +72,8 @@ export default function App({navigation}) {
           <Stack.Screen name='Journalscrn' component={Journalscrn} />
           <Stack.Screen name='Videoscrn' component={Videoscrn} />
           <Stack.Screen name='Audioscrn' component={Audioscrn} />
+          <Stack.Screen name='Forgotpass' component={Forgotpass} />
+          <Stack.Screen name='Resetpass' component={Resetpass} />
            </Stack.Navigator>
     </NavigationContainer>
   );

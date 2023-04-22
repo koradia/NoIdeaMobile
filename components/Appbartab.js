@@ -66,6 +66,7 @@ const Appbartab = () => {
               source={require('../images/logoori.png')}
             />
             <Text style={styles.text}>Hello {name}</Text>
+            <View style={{flex:1, alignItems:'flex-end'}}>
             <TouchableOpacity onPress={() => {}}>
 
       <Ionicons
@@ -73,9 +74,9 @@ const Appbartab = () => {
           size={25}
           color="white"
           
-          style={{marginLeft:width*.34, marginTop:5, marginRight:20 }}
+          style={{marginTop:5, marginRight:20 }}
         />
-        </TouchableOpacity>
+        </TouchableOpacity></View>
             
             
     </View>
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
         paddingTop:5,
         fontFamily:'sans-serif-thin',
         fontStyle:'italic',
-        fontSize:17,
+        fontSize:16,
         color:'white'
       }
 

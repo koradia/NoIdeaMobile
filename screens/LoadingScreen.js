@@ -26,7 +26,7 @@ const LoadingScreen = ({ navigation }) => {
         navigation.navigate('Dashboard');
       } 
       else {
-        if (!loggedin) {
+        // if (!loggedin) {
           //this taken form startscrn
           const checkIfAlreadyLaunched = async ()=>{
             const res = await AsyncStorage.getItem('alreadyLaunched');
@@ -43,8 +43,8 @@ const LoadingScreen = ({ navigation }) => {
 
           console.log("heelo");
           //navigation.navigate("Startscrn");
-        }
-        else navigation.navigate('Dashboard');
+        // }
+        // else navigation.navigate('LoginScreen');
       }
     };
     onhandlestart();

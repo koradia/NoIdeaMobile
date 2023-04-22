@@ -47,7 +47,7 @@ const Userprof = ({navigation}) => {
   const onlogout=()=>{
     AsyncStorage.removeItem('JWT');
     AsyncStorage.removeItem('PID');
-    AsyncStorage.clear();
+    //AsyncStorage.removeItem('alreadyLaunched');
    try{ 
     //navigation.navigate('LoadingScreen');
      navigation.navigate('LoginScreen');

@@ -35,6 +35,7 @@ const Journalscrn = ({navigation}) => {
             }}
             ).catch((e)=>console.log(e))
             // addto 
+            setText("");
             navigation.navigate('Journalscrn');
             console.log('added');
         }
@@ -52,19 +53,19 @@ const Journalscrn = ({navigation}) => {
           )
           //console.log(res.data);
           setNotelist(res.data);
-          console.log(notelist);
+          //console.log(notelist);
 
         }
         catch(e){
-          console.log(e);
+          //console.log(e);
         }
 
       }
       onscreen();
-    },[])
+    },)
 
   return (
-    <View style={{height:height}}>
+    <View style={{flex:1}}>
       <View>
         <Appbartab />
       </View>
@@ -77,26 +78,34 @@ const Journalscrn = ({navigation}) => {
             fontSize: 25,
           }}
         >
-          Journal Notes
+          Sticky Notes
         </Text>
       </View>
-      <View style={{ borderWidth: 0, flexDirection: "row", margin: 20 }}>
+
+      
+      <View style={{alignItems:'center', }}>
         <TextInput
-          style={{ width: 220, height: 40, margin: 10, borderWidth: 1 }}
+          style={{ padding:10, width:340 }}
           //label="Add it here"
+          editable
+          multiline
+          numberOfLines={4}
+          maxLength={40}
           placeholder="Add it here"
           value={text}
           onChangeText={(text) => setText(text)}
-        />
+        /></View>
+
+        <View style={{alignItems:'flex-end', marginRight:20}}>
         <Button
           icon="plus"
           mode="contained"
-          style={{ margin: 10 }}
+          style={{ margin: 10, width:110 }}
           onPress={onaddhandle}
         >
           Add
-        </Button>
-      </View>
+        </Button></View>
+     
         <ScrollView>
         <View style={{ alignItems: "center" }}>
           {notelist.map((ele) => (
@@ -106,8 +115,9 @@ const Journalscrn = ({navigation}) => {
           <Text>{"\n"}</Text>
         </View>
       </ScrollView>
-      <View style={{marginTop:160}} >
-      <Bottombar /></View> 
+      <View style={{}} >
+      <Bottombar />
+      </View> 
     </View>
   );
 };

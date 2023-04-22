@@ -87,7 +87,7 @@ const Taskcomp = (props) => {
           
      
 
-      <Text>{"\n"}</Text>
+     
     </View>
   </View>
   )

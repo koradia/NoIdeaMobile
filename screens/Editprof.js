@@ -16,6 +16,9 @@ import { RadioGroup } from "react-native-radio-buttons-group";
 import Bottombar from "../components/Bottombar";
 import { Url, getToken } from "../components/config";
 import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { TextInput } from "react-native-paper";
+import Editinput from "../components/Editinput";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -33,8 +36,14 @@ const Editprof = ({ navigation }) => {
   //const [date, setDate] = useState(new Date());
   const [bg, setBg] = useState();
   const [age,setAge] =useState(null);
+  const [wplace,setWplace] =useState('');
+  const [ageplace,setAgeplace] =useState('');
+  const [helace,setHeplace] =useState('');
+
+
 
   useEffect(() => {
+    
     const renderdetails = async () => {
       const token = await getToken();
       console.log(token);
@@ -61,13 +70,19 @@ const Editprof = ({ navigation }) => {
       setKg(nav.data.weight);
       setBg(nav.data.bloodgroup);
       setAge(nav.data.age);
+      setHeplace(nav.data.height.toString())
+      setAgeplace(nav.data.age.toString())
       //setDate(nav.data.bDate);
       setGen(nav.data.gender);
+      setWplace(nav.data.weight.toString())
       // console.log(gen)
     };
-   
+    
+    
     renderdetails();
-  });
+    
+  
+  },[]);
 
   const fetchgen = () => {
     const radioButtonsData = [
@@ -110,21 +125,47 @@ const Editprof = ({ navigation }) => {
     }
   }
 
-  const onsavehandle = () => {
+  const onsavehandle = async(e) => {
+    e.preventDefault();
     if (
       phnumber == null ||
       address == null ||
       kg == null ||
       ht == null ||
       gen == null ||
-      bg == null
+      bg == null || 
+      age==null
     ) {
       console.log("please complete all the details");
     } else {
-      const arr = [name, phnumber, address, email, kg, ht, gen, date, bg];
-      //post
+      const arr = [name, phnumber, address, email, kg, ht, gen, bg];
+      const pid = await AsyncStorage.getItem('PID');
+      const result = await axios.post(Url + "/pat/savedetail", {
+        pid: pid,
+        name,
+        phone: phnumber,
+        address,
+        email,
+        photolink: null,
+        score: null,
+        age,
+        gender: gen,
+        weight: kg,
+        height: ht,
+        journal: null,
+        bloodgroup:bg,
+      }).catch((e)=>console.log(e));
+      // console.log(result);
+      if (result.status == 200) {
+        //console.log(result.data);
+        //setId(result.data);
+        navigation.navigate("Dashboard");
+      }
+      else{
+        console.log(result.status);
+      }
+      
 
-      navigation.navigate("Dashboard");
     }
   };
 
@@ -135,34 +176,56 @@ const Editprof = ({ navigation }) => {
           <Appbartab />
         </View>
         <View style={{ margin: 20, alignItems: "center", marginTop: 40 }}>
-          <View>
+          {/* <View>
             <FormInput
               labelValue={name}
               onChangeText={(userName) => setName(userName)}
-              placeholderText={name}
+              placeholderText="your name"
               iconType="user"
               keyboardType="address"
               autoCapitalize="none"
               autoCorrect={false}
             />
+          </View> */}
+          <View>
+          <Editinput 
+           labelValue={name}
+           onChangeText={(userName) => setName(userName)}
+           placeholderText="your name"
+           iconType="Name"
+           keyboardType="address"
+           autoCapitalize="none"
+           autoCorrect={false}
+         />
           </View>
           <View>
-            <FormInput
+            <Editinput
+              labelValue={age}
+              onChangeText={(userage) => setAge(userage)}
+              placeholderText={ageplace}
+              iconType="Age"
+              keyboardType="phone-pad"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+          </View>
+          <View>
+            <Editinput
               labelValue={email}
               onChangeText={(userEmail) => setName(userEmail)}
               placeholderText={email}
-              iconType="mail"
+              iconType="Mail"
               keyboardType="address"
               autoCapitalize="none"
               autoCorrect={false}
             />
           </View>
           <View>
-            <FormInput
+            <Editinput
               labelValue={phnumber}
               onChangeText={(userPhnumber) => setPhnumber(userPhnumber)}
               placeholderText={phnumber}
-              iconType="phone"
+              iconType="Phone"
               keyboardType="phone-pad"
               autoCapitalize="none"
               autoCorrect={false}
@@ -182,7 +245,7 @@ const Editprof = ({ navigation }) => {
               )}
             </View> */}
           <View>
-            <FormInput
+            <Editinput
               labelValue={address}
               onChangeText={(useradd) => setAddress(useradd)}
               placeholderText={address}
@@ -193,45 +256,35 @@ const Editprof = ({ navigation }) => {
             />
           </View>
           <View>
-            <FormInput
+            <Editinput
               labelValue={kg}
-              onChangeText={(userkg) => setKg(userkg)}
-              placeholderText={""}
-              iconType="infocirlce"
+              onChangeText={(kg) => setKg(kg)}
+              placeholderText={wplace}
+              iconType="Weight"
               keyboardType="phone-pad"
               autoCapitalize="none"
               autoCorrect={false}
             />
           </View>
           <View>
-            <FormInput
+            <Editinput
               labelValue={ht}
               onChangeText={(ht) => setHt(ht)}
-              placeholderText={""}
-              iconType="infocirlce"
+              placeholderText={helace}
+              iconType="Height"
               keyboardType="phone-pad"
               autoCapitalize="none"
               autoCorrect={false}
             />
           </View>
+         
           <View>
-            <FormInput
-              labelValue={age}
-              onChangeText={(userag) => setAge(userag)}
-              placeholderText={""}
-              iconType="infocirlce"
-              keyboardType="phone-pad"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
-          </View>
-          <View>
-            <FormInput
+            <Editinput
               labelValue={bg}
               onChangeText={(userbg) => setBg(userbg)}
               placeholderText={bg}
-              iconType="infocirlce"
-              keyboardType="phone-pad"
+              iconType="Blood"
+              keyboardType="address"
               autoCapitalize="none"
               autoCorrect={false}
             />
@@ -256,7 +309,7 @@ const Editprof = ({ navigation }) => {
             />
           </View>
 
-          <View style={{ marginBottom: 25 }}>
+          <View style={{ marginBottom: 20, marginTop:10 }}>
             <FormButton buttonTitle="Save" onPress={onsavehandle} />
           </View>
         </View>

@@ -30,11 +30,10 @@ const Noteslist = (props) => {
               
               <Card.Content>
                 <Paragraph>{text}</Paragraph>
-                <Text style={{textAlign:'right', color:'grey', fontSize:13}}>{date}</Text>
+                <Text style={{textAlign:'right', color:'grey', fontSize:13}}>{date.substring(0, 10)}</Text>
               </Card.Content>
             </Card>
           
-          <Text>{"\n"}</Text>
         </View>
   )
 }

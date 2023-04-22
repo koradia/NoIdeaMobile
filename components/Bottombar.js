@@ -25,6 +25,7 @@ const Bottombar = ({LoginScreen}) => {
 
     <View
       style={{
+        
         flexDirection: "row",
         width:width,
         padding:0,
@@ -34,6 +35,10 @@ const Bottombar = ({LoginScreen}) => {
         paddingRight:30,
         paddingTop:10,
         height:height*.06,
+       
+      alignItems: 'center',
+      position: 'relative', //Here is the trick
+      bottom: 0, //Here is the trick
       }}
     >
         <TouchableOpacity onPress={() => {navigation.navigate('Dashboard')}}>

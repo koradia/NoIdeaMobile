@@ -17,6 +17,7 @@ import Taskcomp from "../components/Taskcomp";
 import { Url, getToken } from "../components/config";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Bottombar from "../components/Bottombar";
 const { width, height } = Dimensions.get("screen");
 const Taskmanager = ({ navigation }) => {
  
@@ -69,6 +70,9 @@ const Taskmanager = ({ navigation }) => {
           <Text>{"\n"}</Text>
         </View>
       </ScrollView>
+      <View>
+        <Bottombar />
+      </View>
     </View>
   );
 };

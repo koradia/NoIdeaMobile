@@ -79,6 +79,10 @@ const Questionnaire = ({ navigation }) => {
         "Authorization": token,
       }}
       ).catch((e)=>console.log(e));
+      console.log(manual.data);
+      const value = JSON.stringify(manual.data.did);
+      await AsyncStorage.setItem("DID", value);
+      
       navigation.navigate('Doctorinfo');
       
 

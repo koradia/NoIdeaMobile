@@ -82,6 +82,8 @@ const Dashboard = ({ navigation }) => {
     return () => backHandler.remove();
   }, []);
 
+  const arr=["1"];
+
   return (
     <View style={{ flex: 1 }}>
       <View>

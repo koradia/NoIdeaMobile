@@ -8,7 +8,7 @@ import axios from "axios";
 import { Url, getToken } from "../components/config";
 
 const { width, height } = Dimensions.get("screen");
-const Doctorinfo = () => {
+const Doctorinfo = ({navigation}) => {
 
   const [name, setName]= useState();
   const [expr, setExpr]= useState();
@@ -101,7 +101,7 @@ const Doctorinfo = () => {
         <Button
           icon="chat"
           mode="elevated"
-          onPress={() => console.log("Pressed")}
+          onPress={() => navigation.navigate('Chatscrn')}
         >
           Chat with Doctor
         </Button>

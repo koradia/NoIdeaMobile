@@ -85,7 +85,7 @@ const Journalscrn = ({navigation}) => {
       
       <View style={{alignItems:'center', }}>
         <TextInput
-          style={{ padding:10, width:340 }}
+          style={{ padding:10, width:330 }}
           //label="Add it here"
           editable
           multiline

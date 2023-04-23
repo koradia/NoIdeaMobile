@@ -29,6 +29,7 @@ import Videoscrn from './screens/Videoscrn';
 import Audioscrn from './screens/Audioscrn';
 import Forgotpass from './screens/Forgotpass';
 import Resetpass from './screens/Resetpass';
+import Chatscrn from './screens/Chatscrn';
 
 const Stack = createNativeStackNavigator();
 
@@ -74,6 +75,7 @@ export default function App({navigation}) {
           <Stack.Screen name='Audioscrn' component={Audioscrn} />
           <Stack.Screen name='Forgotpass' component={Forgotpass} />
           <Stack.Screen name='Resetpass' component={Resetpass} />
+          <Stack.Screen name='Chatscrn' component={Chatscrn} />
            </Stack.Navigator>
     </NavigationContainer>
   );

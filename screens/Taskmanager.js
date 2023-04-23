@@ -63,7 +63,8 @@ const Taskmanager = ({ navigation }) => {
       <ScrollView>
         <View style={{ alignItems: "center" }}>
           {taskList.map((ele,index) => (
-            <Taskcomp tid={ele.assignedTask.tid} taskText={ele.tasktext} isComplete={ele.assignedTask.complete} did={ele.assignedTask.did} />
+
+           ele.tasktype==1 ? <Taskcomp tid={ele.assignedTask.tid} taskText={ele.tasktext} isComplete={ele.assignedTask.complete} did={ele.assignedTask.did} /> : <Text></Text>
       
             
           ))}

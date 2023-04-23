@@ -51,7 +51,7 @@ const Therapy = () => {
         marginBottom: 10,
       }}
     >
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.navigate('Chatscrn')}>
         <Image
           style={{
             width: width * 0.22,

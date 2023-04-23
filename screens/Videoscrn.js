@@ -1,11 +1,15 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Appbartab from "../components/Appbartab";
 import YoutubePlayer from "react-native-youtube-iframe";
-import { Button } from "react-native-paper";
+import { Button, Checkbox } from "react-native-paper";
 import Bottombar from "../components/Bottombar";
 import { Dimensions } from "react-native";
 import { CheckBox } from "@rneui/themed/dist/CheckBox";
+import Videocomp from "../components/Videocomp";
+import { Url, getToken } from "../components/config";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -14,98 +18,43 @@ const Videoscrn = () => {
   const [playing1, setPlaying1] = useState();
   const [playing2, setPlaying2] = useState();
   const [playing3, setPlaying3] = useState();
+  const [checked, setChecked] = React.useState(false);
 
-  const togglePlaying = () => {
-    setPlaying((prev) => !prev);
-  };
-
-  const onStateChange = (state) => {
-    if (state === "ended") {
-      setPlaying(false);
-      alert("video has finished playing!");
+  useEffect(() => {
+    const fetchData= async()=>{
+      
+      const token = await getToken();
+      const pid = await AsyncStorage.getItem('PID');
+      const res = await axios.post(Url + "/get/assigned/tasks/"+pid, 
+      {},{headers:{
+        "Authorization": token,
+      }}
+      ).catch((e)=>console.log(e));
+      
+      setVideolist(res.data);  
+      console.log(videoList);
     }
-  };
+    fetchData();
+  },);
 
-  const onStateChange1 = (state) => {
-    if (state === "ended") {
-      setPlaying1(false);
-      alert("video has finished playing!");
-    }
-  };
+  let url="https://www.youtube.com/watch?v=fG1oNm2tCro";
 
-  const onStateChange2 = (state) => {
-    if (state === "ended") {
-      setPlaying2(false);
-      alert("video has finished playing!");
-    }
-  };
+  const [videoList,setVideolist]=useState([]);
+
 
   return (
-    <View style={{flex:1, backgroundColor:'#ffffff'}}>
+    <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
       <View>
         <Appbartab />
       </View>
       <ScrollView>
-        <View style={{ margin: 20, }}>
-          <View style={{borderWidth:1, flexDirection:'row' }}>
-          <Text style={{ marginTop: 18, fontSize: 15, fontWeight: "800" }}>
-            Importance of Meditation :{""} 
-          </Text>
-          <CheckBox
-                  iconRight
-                  containerStyle={{
-                    backgroundColor: "#ffffff",
-                    borderWidth: 0,
-                    
-                    //borderColor:'black',
-                    backfaceVisibility: "hidden",
-                    padding: 8,
-                    position:'relative',
-                    paddingTop:15,
-                    borderRadius: 0,
-                  }}
-                  center
-                  // title=""
-                  checked={true}
-                  // onPress={oncheckhandle}
-                  textStyle={{ fontSize: 15 }}
-                /></View>
-          <YoutubePlayer
-            height={200}
-            width={330}
-            play={playing}
-            videoId={"wruCWicGBA4"}
-            onChangeState={onStateChange}
-          />
-          {/* <Button mode="contained" title={playing ? "pause" : "play"} onPress={togglePlaying} >Play</Button> */}
-        </View>
-
-        <View style={{ margin: 20 }}>
-          <Text style={{ marginBottom: 10, fontSize: 15, fontWeight: "800" }}>
-            Motivational Stories :{" "}
-          </Text>
-          <YoutubePlayer
-            height={200}
-            width={330}
-            play={playing1}
-            videoId={"kdXa4J_lKcY"}
-            onChangeState={onStateChange1}
-          />
-          {/* <Button mode="contained" title={playing ? "pause" : "play"} onPress={togglePlaying} >Play</Button> */}
-        </View>
-        <View style={{ margin: 20 }}>
-          <Text style={{ marginBottom: 10, fontSize: 15, fontWeight: "800" }}>
-            Motivational Stories :{" "}
-          </Text>
-          <YoutubePlayer
-            height={200}
-            width={330}
-            play={playing1}
-            videoId={"kdXa4J_lKcY"}
-            onChangeState={onStateChange1}
-          />
-          {/* <Button mode="contained" title={playing ? "pause" : "play"} onPress={togglePlaying} >Play</Button> */}
-        </View>
+      {videoList.map((ele,index) => (
+            
+              ele.tasktype===2 ? <Videocomp tid={ele.assignedTask.tid} text={ele.tasktext} vid={ele.tasklink} isComplete={ele.assignedTask.complete} did={ele.assignedTask.did} /> : <Text></Text>
+            
+            // <Videocomp vid={ele.tasklink} />
+            
+          ))}
        
       </ScrollView>
       <View style={{}}>
@@ -118,3 +67,41 @@ const Videoscrn = () => {
 export default Videoscrn;
 
 const styles = StyleSheet.create({});
+
+
+
+
+
+
+
+
+
+
+
+
+/* <View style={{ margin: 20 }}>
+<Text style={{ marginBottom: 10, fontSize: 15, fontWeight: "800" }}>
+  Motivational Stories :{" "}
+</Text>
+<YoutubePlayer
+  height={200}
+  width={330}
+  play={playing1}
+  videoId={"kdXa4J_lKcY"}
+  onChangeState={onStateChange1}
+/>
+{/* <Button mode="contained" title={playing ? "pause" : "play"} onPress={togglePlaying} >Play</Button> */
+// </View>
+/* <View style={{ margin: 20 }}> */
+/* <Text style={{ marginBottom: 10, fontSize: 15, fontWeight: "800" }}>
+  Motivational Stories :{" "}
+</Text>
+<YoutubePlayer
+  height={200}
+  width={330}
+  play={playing1}
+  videoId={"kdXa4J_lKcY"}
+  onChangeState={onStateChange1}
+/> */
+/* <Button mode="contained" title={playing ? "pause" : "play"} onPress={togglePlaying} >Play</Button> */
+// {/* </View> */} */}

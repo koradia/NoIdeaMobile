@@ -37,9 +37,9 @@ const Dashboard = ({ navigation }) => {
 
   const [prog1, setProg1] = useState(0);
 
-    
-  
     const [prog2, setProg2] = useState(0);
+
+    const [prog3, setProg3]= useState(0);
 
   
 
@@ -57,11 +57,15 @@ const Dashboard = ({ navigation }) => {
         
         );
         console.log(res.data[0].assig);
-        let p1= (res.data[0].compl)/(res.data[0].assig)
-        let p3= (res.data[1].compl)/(res.data[1].assig)
-        setProg1(p1*100)
-        setProg2(p3*100)
-        console.log(prog1);
+        let p1= Math.round((res.data[0].compl*100)/(res.data[0].assig))
+        let p2= Math.round((res.data[1].compl*100)/(res.data[1].assig))
+        let p3= Math.round((res.data[2].compl*100)/(res.data[2].assig))
+
+        setProg1(p1)
+        setProg2(p2)
+        setProg3(p3)
+        console.log(prog2);
+        console.log(prog3);
       } catch (error) {
         console.log(error);
       }
@@ -98,7 +102,7 @@ const Dashboard = ({ navigation }) => {
       </View>
 
       <ScrollView contentContainerStyle={{ backgroundColor: "#ffffff" }}>
-        <Iconsall prog1={prog1} prog2={prog2} />
+        <Iconsall prog1={prog1} prog2={prog2} prog3={prog3} />
         <View>
           <Assessyourself />
         </View>

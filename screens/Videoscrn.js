@@ -50,7 +50,7 @@ const Videoscrn = () => {
       <ScrollView>
       {videoList.map((ele,index) => (
             
-              ele.tasktype===2 ? <Videocomp tid={ele.assignedTask.tid} text={ele.tasktext} vid={ele.tasklink} isComplete={ele.assignedTask.complete} did={ele.assignedTask.did} /> : <Text></Text>
+              ele.tasktype===2 ? <Videocomp tid={ele.assignedTask.tid} text={ele.tasktext} vid={ele.tasklink} isComplete={ele.assignedTask.complete} did={ele.assignedTask.did} /> : <View></View>
             
             // <Videocomp vid={ele.tasklink} />
             

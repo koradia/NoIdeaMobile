@@ -2,12 +2,16 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Card, Paragraph } from 'react-native-paper'
 import { Dimensions } from 'react-native'
+import { convertDate } from './Convdate';
 
 const {width,height}= Dimensions.get('screen');
 
 const Chatbox = (props) => {
 
     const {int, text, time}= props;
+
+    
+
   return (
     <View>
         {int==1 ? 
@@ -28,7 +32,7 @@ const Chatbox = (props) => {
               
               <Card.Content>
                 <Paragraph>{text}</Paragraph>
-                <Text style={{textAlign:'right', color:'grey', fontSize:13}}>{time.substring(11,16)}</Text>
+                <Text style={{textAlign:'right', color:'grey', fontSize:13}}>{convertDate(time)}</Text>
               </Card.Content>
             </Card>
     </View> :
@@ -49,7 +53,7 @@ const Chatbox = (props) => {
               
               <Card.Content>
                 <Paragraph>{text}</Paragraph>
-                <Text style={{textAlign:'right', color:'grey', fontSize:13}}>{time.substring(11,16)}</Text>
+                <Text style={{textAlign:'right', color:'grey', fontSize:13}}>{convertDate(time)}</Text>
               </Card.Content>
             </Card>
     </View>}

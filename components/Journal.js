@@ -33,7 +33,7 @@ const Journal = () => {
                 source={require("../images/agenda.png")}
               >
 
-                <Text style={{textAlign:'center',marginTop:85, marginLeft:50, fontWeight:'bold', fontSize:15}}>{name}</Text>
+                <Text style={{textAlign:'center',marginTop:85, marginLeft:50, fontWeight:'bold', fontSize:15}}>{name}'s</Text>
                 <Text style={{textAlign:'center',marginLeft:40,fontSize:15, fontWeight:'bold' }}>Journal</Text>
                 <Text style={{textAlign:'center', marginTop:60, marginLeft:20, color:'white'}}>Tap to Begin</Text>
               </ImageBackground>

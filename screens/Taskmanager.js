@@ -22,7 +22,7 @@ const { width, height } = Dimensions.get("screen");
 const Taskmanager = ({ navigation }) => {
  
   const [taskList,setTaskList]=useState([]);
-
+  // const count=0;
   useEffect(() => {
     const fetchData= async()=>{
       
@@ -39,42 +39,29 @@ const Taskmanager = ({ navigation }) => {
     fetchData();
   }, []);
 
-  const right = () => <Text>wert-</Text>;
 
-  const arr = [
-    ["t1w", "soqwertyu", "false"],
-    ["t2", "some", "true"],
-    ["t1", "so", "false"],
-    ["t1", "so", "true"],
-    ["t1", "so", "false"],
-    ["t1", "so", "true"],
-  ];
 
   
 
   return (
-    <View style={{ flex: 1 }}>
+   
+    <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
+    <View>
       <Appbartab />
-      <View>
-        <Text style={styles.title}>
-          {"\n"}Daily Goals{"\n"}
-        </Text>
-      </View>
-      <ScrollView>
-        <View style={{ alignItems: "center" }}>
-          {taskList.map((ele,index) => (
-
-           ele.tasktype==1 ? <Taskcomp tid={ele.assignedTask.tid} taskText={ele.tasktext} isComplete={ele.assignedTask.complete} did={ele.assignedTask.did} /> : <Text></Text>
-      
+    </View>
+    
+    <Text style={{textAlign:'center',padding:20, fontSize:20, fontWeight:'600', color:'maroon'}}>Daily Tasks</Text>
+    <ScrollView>
+    {taskList.map((ele,index) => (
+           ele.tasktype==1 ? <Taskcomp tid={ele.assignedTask.tid} index={"Task"} taskText={ele.tasktext} isComplete={ele.assignedTask.complete} did={ele.assignedTask.did} /> : <View></View>
             
           ))}
-          <Text>{"\n"}</Text>
-        </View>
-      </ScrollView>
-      <View>
+           </ScrollView>
+      <View style={{}}>
         <Bottombar />
       </View>
     </View>
+
   );
 };
 

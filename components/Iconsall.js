@@ -25,7 +25,7 @@ const Iconsall = (props) => {
 
     const [progress, setProgress] = useState(0);
 
-    const {prog1,prog2}= props;
+    const {prog1,prog2,prog3}= props;
 
     const [progress1, setProgress1] = useState(0);
   
@@ -196,7 +196,7 @@ const Iconsall = (props) => {
           </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigation.navigate('Audioscrn')} activeOpacity={.9}>
+          <TouchableOpacity onPress={()=>navigation.navigate('Browse')} activeOpacity={.9}>
           <View>
            
               <Card
@@ -220,7 +220,7 @@ const Iconsall = (props) => {
                   }}
                 >
                   <Card.Cover
-                    source={require("../images/music1.png")}
+                    source={require("../images/article.png")}
                     style={{
                       //backgroundColor: "#3b2f2f",
                       backgroundColor: "#E8D5C4",
@@ -232,7 +232,7 @@ const Iconsall = (props) => {
                   ></Card.Cover>
                   <View style={{ marginLeft: 30, paddingTop: 13 }}>
                     <ProgressCircle
-                      percent={progress1}
+                      percent={prog3}
                       radius={40}
                       borderWidth={5}
                       color="#57d83c"
@@ -247,7 +247,7 @@ const Iconsall = (props) => {
                           fontStyle: "italic",
                         }}
                       >
-                        {progress1}%
+                        {prog3}%
                       </Text>
                     </ProgressCircle>
                   </View>

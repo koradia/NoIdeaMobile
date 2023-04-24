@@ -1,17 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { Card, Paragraph, Checkbox } from 'react-native-paper';
-import { CheckBox } from '@rneui/themed';
-import { Dimensions } from 'react-native';
-import axios from 'axios';
-import { Url, getToken } from './config';
+import { Linking, StyleSheet, Text, View } from 'react-native'
+import React, { useState } from 'react'
+import { Checkbox } from 'react-native-paper'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Url, getToken } from './config';
+import axios from 'axios';
 
-const {width, height}= Dimensions.get('screen')
+const Browsecomp = (props) => {
 
-const Taskcomp = (props) => {
-    const {tid,index,taskText,isComplete,did}=props;
+    const {tid, text, vid, isComplete, tasklink, did}= props;
+
     const [isChecked,setIsChecked]=useState(isComplete);
+
+
     const oncheckhandle=async ()=>{
         const token = await getToken();
         const pid = await AsyncStorage.getItem('PID');
@@ -47,12 +47,10 @@ const Taskcomp = (props) => {
 
     }
 
+
   return (
-    <View>
-   
-    
-    <View style={{marginTop:20, marginLeft:40, marginRight:40, borderWidth:1, padding:20,  borderRadius:20, flexDirection:'row', flex:1, backgroundColor:'#FDE2F3'}}>
-      <View><Text style={{color:'#594545', marginTop:5, width:230}}>{taskText}</Text></View>
+    <View style={{marginTop:20, marginLeft:40, marginRight:40, borderWidth:1, padding:20,  borderRadius:20, flexDirection:'row', flex:1, backgroundColor:'#E4D0D0'}}>
+      <View><Text style={{color:'#594545', marginTop:5, width:230}} onPress={() => Linking.openURL(tasklink)}>{text}</Text></View>
       <View style={{}}>
       <Checkbox
                         status={isChecked ? "checked" : "unchecked"}
@@ -61,10 +59,9 @@ const Taskcomp = (props) => {
                       />
       </View>
     </View>
-  </View>
   )
 }
 
-export default Taskcomp;
+export default Browsecomp
 
 const styles = StyleSheet.create({})

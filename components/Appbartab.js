@@ -8,6 +8,7 @@ import  Ionicons from 'react-native-vector-icons/Ionicons';
 import { useState } from 'react';
 import { Url, getToken } from './config';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const {width,height}=Dimensions.get('screen');
 
 
@@ -17,25 +18,27 @@ const Appbartab = () => {
   useEffect(()=>{
     const rendername = async() => {
       
-      const token= await getToken();
-      console.log(token);
-      const nav = await axios.post(
-        Url + "/patget/detail",
-        {},
-        {headers: {
-            Authorization: token,
-          },
-        }
-      ).catch((e)=>{
-        console.log(e);
+      // const token= await getToken();
+      // console.log(token);
+      // const nav = await axios.post(
+      //   Url + "/patget/detail",
+      //   {},
+      //   {headers: {
+      //       Authorization: token,
+      //     },
+      //   }
+      // ).catch((e)=>{
+      //   console.log(e);
 
-      })
-      console.log(nav.data);
-      setName(nav.data.name)
+      // })
+      // console.log(nav.data);
+      const n = await AsyncStorage.getItem("name");
+      //console.log(n);
+      setName(n);
     }
     rendername();
 
-  })
+  },[])
   return (
     
      

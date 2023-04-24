@@ -30,11 +30,13 @@ const radioButtonsData = [
     id: "1", // acts as primary key, should be unique and non-empty string
     label: "Male",
     value: "M",
+    selected: false,
   },
   {
     id: "2",
     label: "Female",
     value: "F",
+    selected: false,
   },
 ];
 
@@ -42,16 +44,16 @@ const { width, height } = Dimensions.get("screen");
 
 const Adddetails = ({ route, navigation }) => {
   // const [name, setName] = useState();
-  const [phnumber, setPhnumber] = useState("123");
-  const [address, setAddress] = useState("qwerty");
+  const [phnumber, setPhnumber] = useState(null);
+  const [address, setAddress] = useState(null);
 
   const [datePicker, setDatePicker] = useState(false);
-  const [kg, setKg] = useState("55");
-  const [ht, setHt] = useState("166");
+  const [kg, setKg] = useState(null);
+  const [ht, setHt] = useState(null);
   const [gen, setGen] = useState(null);
   const [date, setDate] = useState(new Date());
-  const [bg, setBg] = useState("O+");
-  const [age, setAge]= useState();
+  const [bg, setBg] = useState(null);
+  const [age, setAge]= useState(null);
 
   const onhandlesubmit = async (e) => {
     if (
@@ -64,6 +66,14 @@ const Adddetails = ({ route, navigation }) => {
       age== null
     ) {
       alert("please enter all the details");
+      setAddress(null);
+          setAge(null);
+          setBg(null);
+          setGen(null);
+          setHt(null);
+          setKg(null);
+          setPhnumber(null);
+      
     } else {
       e.preventDefault();
       const res = await axios
@@ -78,9 +88,24 @@ const Adddetails = ({ route, navigation }) => {
           }
         )
         .catch(() => {
-          alert("please use different username");
+          alert("please use different username or wrong email");
+          alert("please use different email");
+          setAddress(null);
+          setAge(null);
+          setBg(null);
+          setGen(null);
+          setHt(null);
+          setKg(null);
+          setPhnumber(null);
           navigation.navigate("Signup");
         });
+        setAddress(null);
+      setAge(null);
+      setBg(null);
+      setGen(null);
+      setHt(null);
+      setKg(null);
+      setPhnumber(null);
       console.log(res.data);
       const result = await axios.post(Url + "/pat/savedetail", {
         pid: res.data,
@@ -99,8 +124,14 @@ const Adddetails = ({ route, navigation }) => {
       });
       // console.log(result);
       if (result.status == 200) {
-        //console.log(result.data);
-        //setId(result.data);
+        setAddress(null);
+          setAge(null);
+          setBg(null);
+          setGen(null);
+          setHt(null);
+          setKg(null);
+          setPhnumber(null);
+        alert('Account created successfully')
         navigation.navigate("LoginScreen");
       }
 
@@ -126,7 +157,7 @@ const Adddetails = ({ route, navigation }) => {
   function onPressRadioButton(radioButtonsArray) {
     setRadioButtons(radioButtonsArray);
     //console.log(radioButtonsArray[0].selected==true);
-    if (radioButtonsArray[0].selected == true) {
+    if (radioButtonsArray[0].selected === true) {
       setGen(1);
     } else {
       setGen(0);

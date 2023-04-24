@@ -1,9 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ImageBackground, StyleSheet, Text, View , ScrollView} from 'react-native'
 import React, { useState } from 'react'
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import { Url, getToken } from '../components/config';
 import axios from 'axios';
+import { Dimensions } from 'react-native';
+import Userprof from './Userprof';
+
+const {width,height}= Dimensions.get('screen');
 
 const Resetpass = ({navigation}) => {
 
@@ -45,12 +49,22 @@ const Resetpass = ({navigation}) => {
     }
 
   return (
-    <View>
-        <View style={{margin:100}}>
-      
-      </View>
-      <View style={{ paddingTop: 0, alignItems: "center" }}>
-    <Text style={{fontSize:18, marginBottom:80}}>New Password</Text>
+    <ScrollView>
+       <ImageBackground
+            source={require('../images/imgbg.jpg')}
+            resizeMode="cover"
+            style={{ justifyContent: "center" }}
+            imageStyle={{
+            width: width,
+           // opacity: 0.25,
+           height:height,
+            borderRadius: 5,
+            }}
+        >
+          
+     <View style={{marginTop:200, alignItems:'center', marginBottom:40}}><Text style={{color:'maroon', fontSize:20}} >Set Your New Password</Text></View>
+       
+      <View style={{ paddingTop: 50, alignItems: "center" }}>
 
     <FormInput
           labelValue={currpass}
@@ -83,11 +97,13 @@ const Resetpass = ({navigation}) => {
           autoCorrect={false}
         />
      
-      <View style={{margin:50}}>
+      <View style={{margin:50, flexDirection:'column',justifyContent:'space-between',marginBottom:180}}>
         <FormButton buttonTitle="Set Password" onPress={onsetHandle} />
+        <FormButton buttonTitle="Cancel" onPress={()=>navigation.navigate(Userprof)} />
         </View>
         </View>
-    </View>
+        </ImageBackground>
+    </ScrollView>
   )
 }
 

@@ -30,6 +30,26 @@ const Therapy = () => {
 
   }
 
+  const ondoctorhandle1=async(e)=>{
+    e.preventDefault();
+    const token= await getToken();
+    const nav = await axios.post(
+      Url + "/patget/detail",
+      {},
+      {headers: {
+          Authorization: token,
+        },
+      }
+    ).catch((e)=>{
+      console.log(e);
+    })
+    
+    console.log(nav.data.score);
+    if(nav.data.score!=null) navigation.navigate('Chatscrn');
+    else navigation.navigate('Questionnaire')
+
+  }
+
     const navigation=useNavigation('Doctorinfo');
   return (
     <View
@@ -51,7 +71,7 @@ const Therapy = () => {
         marginBottom: 10,
       }}
     >
-      <TouchableOpacity onPress={()=>navigation.navigate('Chatscrn')}>
+      <TouchableOpacity onPress={ondoctorhandle1}>
         <Image
           style={{
             width: width * 0.22,

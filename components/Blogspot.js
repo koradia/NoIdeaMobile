@@ -20,7 +20,7 @@ const Blogspot = () => {
             marginLeft: 18,
             marginTop: 20,
             fontSize: 20,
-            fontWeight: "bold",
+            // fontWeight: "bold",
           }}
         >
           Blogspot

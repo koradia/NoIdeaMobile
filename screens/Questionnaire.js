@@ -10,6 +10,7 @@ import Bottombar from "../components/Bottombar";
 import config, { Token, Url, getToken } from "../components/config";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import  Ionicons from 'react-native-vector-icons/Ionicons';
 //import { tokens } from "react-native-paper/lib/typescript/src/styles/themes/v3/tokens";
 
 //const[width,height]=Dimensions.get('screen');
@@ -122,7 +123,7 @@ const Questionnaire = ({ navigation }) => {
                   <View style={{ flexDirection: "row", marginRight: 10 }}>
                     <Text style={{ marginLeft: 3 }}>Q1.{"\n"}</Text>
                     <Text style={{ marginLeft: 3 }}>
-                      Little interest or pleasure in doing things?
+                      Not getting interest or pleasure in doing things?
                     </Text>
                   </View>
                                 <View
@@ -133,7 +134,15 @@ const Questionnaire = ({ navigation }) => {
                                     justifyContent: "space-between",
                                   }}
                                 >
-                                  <View style={{ width: 250, }}>
+                                  {/* goodsmile */}
+                                  <Ionicons
+                                    name='md-happy-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:5 }}
+                                  />
+                                  <View style={{ width: 250, marginTop:5 }}>
                                     <Slider
                                       step={1}
                                       minimumValue={0}
@@ -147,8 +156,15 @@ const Questionnaire = ({ navigation }) => {
                                     />
                                   </View>
                                   <Text>
-                                    {v1}%{"\n"}
+                                    {v1}{"\n"}
                                   </Text>
+                                  <Ionicons
+                                    name='md-sad-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:10 }}
+                                  />
                                 </View>
                 </View>
 
@@ -167,7 +183,14 @@ const Questionnaire = ({ navigation }) => {
                                       justifyContent: "space-between",
                                     }}
                                   >
-                                    <View style={{ width: 250 }}>
+                                     <Ionicons
+                                    name='md-happy-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:5 }}
+                                  />
+                                    <View style={{ width: 250, marginTop:5 }}>
                                       <Slider
                                         step={1}
                                         minimumValue={0}
@@ -180,8 +203,15 @@ const Questionnaire = ({ navigation }) => {
                                       />
                                     </View>
                                     <Text>
-                                      {v2}%{"\n"}
+                                      {v2}{"\n"}
                                     </Text>
+                                    <Ionicons
+                                    name='md-sad-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:5 }}
+                                  />
                                   </View>
                 </View>
 
@@ -201,7 +231,14 @@ const Questionnaire = ({ navigation }) => {
                                       justifyContent: "space-between",
                                     }}
                                   >
-                                    <View style={{ width: 250 }}>
+                                     <Ionicons
+                                    name='md-happy-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:5 }}
+                                  />
+                                    <View style={{ width: 250, marginTop:5 }}>
                                       <Slider
                                         step={1}
                                         minimumValue={0}
@@ -214,8 +251,15 @@ const Questionnaire = ({ navigation }) => {
                                       />
                                     </View>
                                     <Text>
-                                      {v3}%{"\n"}
+                                      {v3}{"\n"}
                                     </Text>
+                                    <Ionicons
+                                    name='md-sad-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:5 }}
+                                  />
                                   </View>
                 </View>
 
@@ -235,7 +279,14 @@ const Questionnaire = ({ navigation }) => {
                                     justifyContent: "space-between",
                                   }}
                                 >
-                                  <View style={{ width: 250 }}>
+                                   <Ionicons
+                                    name='md-happy-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:5 }}
+                                  />
+                                  <View style={{ width: 250, marginTop:5 }}>
                                     <Slider
                                       step={1}
                                       minimumValue={0}
@@ -248,8 +299,15 @@ const Questionnaire = ({ navigation }) => {
                                     />
                                   </View>
                                   <Text>
-                                    {v4}%{"\n"}
+                                    {v4}{"\n"}
                                   </Text>
+                                  <Ionicons
+                                    name='md-sad-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:5 }}
+                                  />
                                 </View>
                               </View>
 
@@ -270,7 +328,14 @@ const Questionnaire = ({ navigation }) => {
                                       justifyContent: "space-between",
                                     }}
                                   >
-                                    <View style={{ width: 250 }}>
+                                     <Ionicons
+                                    name='md-happy-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:5 }}
+                                  />
+                                    <View style={{ width: 250 , marginTop:5}}>
                                       <Slider
                                         step={1}
                                         minimumValue={0}
@@ -283,8 +348,15 @@ const Questionnaire = ({ navigation }) => {
                                       />
                                     </View>
                                     <Text>
-                                      {v5}%{"\n"}
+                                      {v5}{"\n"}
                                     </Text>
+                                    <Ionicons
+                                    name='md-sad-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:5 }}
+                                  />
                                   </View>
                 </View>
 
@@ -303,7 +375,14 @@ const Questionnaire = ({ navigation }) => {
                                       justifyContent: "space-between",
                                     }}
                                   >
-                                    <View style={{ width: 250 }}>
+                                     <Ionicons
+                                    name='md-happy-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:5 }}
+                                  />
+                                    <View style={{ width: 250, marginTop:5 }}>
                                       <Slider
                                         step={1}
                                         minimumValue={0}
@@ -316,8 +395,15 @@ const Questionnaire = ({ navigation }) => {
                                       />
                                     </View>
                                     <Text>
-                                      {v6}%{"\n"}
+                                      {v6}{"\n"}
                                     </Text>
+                                    <Ionicons
+                                    name='md-sad-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:5 }}
+                                  />
                                   </View>
                 </View>
 
@@ -336,7 +422,14 @@ const Questionnaire = ({ navigation }) => {
                                     justifyContent: "space-between",
                                   }}
                                 >
-                                  <View style={{ width: 250 }}>
+                                   <Ionicons
+                                    name='md-happy-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:5 }}
+                                  />
+                                  <View style={{ width: 250, marginTop:5 }}>
                                     <Slider
                                       step={1}
                                       minimumValue={0}
@@ -349,8 +442,15 @@ const Questionnaire = ({ navigation }) => {
                                     />
                                   </View>
                                   <Text>
-                                    {v7}%{"\n"}
+                                    {v7}{"\n"}
                                   </Text>
+                                  <Ionicons
+                                    name='md-sad-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:5 }}
+                                  />
                                 </View>
                 </View>
 
@@ -370,7 +470,14 @@ const Questionnaire = ({ navigation }) => {
                                         justifyContent: "space-between",
                                       }}
                                     >
-                                      <View style={{ width: 250 }}>
+                                       <Ionicons
+                                    name='md-happy-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:5 }}
+                                  />
+                                      <View style={{ width: 250, marginTop:5 }}>
                                         <Slider
                                           step={1}
                                           minimumValue={0}
@@ -382,7 +489,14 @@ const Questionnaire = ({ navigation }) => {
                                           thumbTintColor="#230a13"
                                         />
                                       </View>
-                                      <Text>{v8}%</Text>
+                                      <Text>{v8}</Text>
+                                      <Ionicons
+                                    name='md-sad-outline'
+                                    size={25}
+                                    color="black"
+                                    
+                                    style={{marginTop:0, marginRight:5 }}
+                                  />
                                     </View>
 
                                     

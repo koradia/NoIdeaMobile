@@ -25,9 +25,9 @@ import config from "../components/config";
 const { width, height } = Dimensions.get("screen");
 
 const SignupScreen = ({ navigation }) => {
-  const [email, setEmail] = useState("k");
-  const [password, setPassword] = useState("123");
-  const [confirmPassword, setConfirmPassword] = useState("123");
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [confirmPassword, setConfirmPassword] = useState(null);
   const [name, setName] = useState(null);
 
   const onTermsOfUsePressed = () => {
@@ -48,6 +48,7 @@ const SignupScreen = ({ navigation }) => {
     ) {
       alert("please fill entire with data");
     } else {
+      
       e.preventDefault();
       navigation.navigate("Adddetails", {  name, email ,password});
       
@@ -156,7 +157,7 @@ const SignupScreen = ({ navigation }) => {
           <View
             style={{ paddingTop: 30, alignItems: "center", paddingBottom: 0 }}
           >
-            <FormButton buttonTitle="Registering" onPress={onhandlecontinue} />
+            <FormButton buttonTitle="Register" onPress={onhandlecontinue} />
 
             <View
               style={{

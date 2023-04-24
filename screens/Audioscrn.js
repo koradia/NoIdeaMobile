@@ -33,13 +33,15 @@ const Audioscrn = () => {
 
 
 
-  // const video = React.useRef(null);
-  // const [status, setStatus] = useState({});
 
   useEffect(() => {
     (async () => {
       console.log("status", audioStatus);
+      
       if (audioStatus) {
+        setAudioStatus1(false);
+      setAudioStatus2(false);
+      setAudioStatus3(false);
         await sound.loadAsync(require("../assets/om.mp3"));
         try {
           await sound.playAsync();
@@ -57,6 +59,9 @@ const Audioscrn = () => {
     (async () => {
       console.log("status", audioStatus1);
       if (audioStatus1) {
+        setAudioStatus(false);
+        setAudioStatus2(false);
+        setAudioStatus3(false);
         await sound1.loadAsync(require("../assets/marron.mp3"));
         try {
           await sound1.playAsync();
@@ -74,6 +79,9 @@ const Audioscrn = () => {
     (async () => {
       console.log("status", audioStatus2);
       if (audioStatus2) {
+        setAudioStatus1(false);
+        setAudioStatus0(false);
+        setAudioStatus3(false);
         await sound2.loadAsync(require("../assets/flute.mp3"));
         try {
           await sound2.playAsync();
@@ -91,6 +99,9 @@ const Audioscrn = () => {
     (async () => {
       console.log("status", audioStatus3);
       if (audioStatus3) {
+        setAudioStatus1(false);
+        setAudioStatus2(false);
+        setAudioStatus0(false);
         await sound3.loadAsync(require("../assets/om.mp3"));
         try {
           await sound3.playAsync();
@@ -105,9 +116,9 @@ const Audioscrn = () => {
   }, [audioStatus3]);
 
   return (
-    <View style={{ backgroundColor: "white", height: height * 1.04 }}>
+    <View style={{  height: height * 1.04 }}>
       <Appbartab />
-      <ScrollView>
+      <ScrollView contentContainerStyle={{backgroundColor:'#ffffff'}}>
         {/* <Button
           color={audioStatus ? "red" : "green"}
           title={"play"}

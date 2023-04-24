@@ -20,61 +20,55 @@ import { useNavigation } from "@react-navigation/native";
 import { Url, getToken } from "../components/config";
 import axios from "axios";
 
-
 const { width, height } = Dimensions.get("screen");
 
-
-
-
-
-const Userprof = ({navigation}) => {
-
+const Userprof = ({ navigation }) => {
   const [name, setName] = useState();
   const [phnumber, setPhnumber] = useState();
   const [address, setAddress] = useState();
   const [email, setEmail] = useState();
   //const [datePicker, setDatePicker] = useState(false);
   const [kg, setKg] = useState();
-  const [ht,setHt] = useState();
-  const [gen, setGen]= useState(null);
+  const [ht, setHt] = useState();
+  const [gen, setGen] = useState(null);
   const [date, setDate] = useState();
   const [bg, setBg] = useState();
   const [age, setAge] = useState();
 
-
-
   // const navigation =useNavigation();
-  const onlogout=()=>{
-    AsyncStorage.removeItem('JWT');
-    AsyncStorage.removeItem('PID');
-    AsyncStorage.removeItem('DID');
+  const onlogout = () => {
+    AsyncStorage.removeItem("JWT");
+    AsyncStorage.removeItem("PID");
+    AsyncStorage.removeItem("DID");
+    AsyncStorage.removeItem("name");
 
     //AsyncStorage.removeItem('alreadyLaunched');
-   try{ 
-    //navigation.navigate('LoadingScreen');
-     navigation.navigate('LoginScreen');
-    }catch(err){
-     console.log(err);
+    try {
+      //navigation.navigate('LoadingScreen');
+      navigation.navigate("LoginScreen");
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
-  useEffect(()=>{
-    const renderdetails = async() => {
-      
-      const token= await getToken();
-      console.log(token);
-      const nav = await axios.post(
-        Url + "/patget/detail",
-        {},
-        {headers: {
-            Authorization: token,
-          },
-        }
-      ).catch((e)=>{
-        console.log(e);
-
-      })
-      console.log(nav.data);
+  useEffect(() => {
+    const renderdetails = async () => {
+      const token = await getToken();
+      //console.log(token);
+      const nav = await axios
+        .post(
+          Url + "/patget/detail",
+          {},
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        )
+        .catch((e) => {
+          console.log(e);
+        });
+      //console.log(nav.data);
       setName(nav.data.name);
       setAddress(nav.data.address);
       setPhnumber(nav.data.phone);
@@ -84,14 +78,12 @@ const Userprof = ({navigation}) => {
       setKg(nav.data.weight);
       setDate(nav.data.bDate);
       setBg(nav.data.bloodgroup);
-      setAge(nav.data.age)
-      if(nav.data.gender==1) setGen('male');
-      else setGen('Female');
-      
-    }
+      setAge(nav.data.age);
+      if (nav.data.gender == 1) setGen("male");
+      else setGen("Female");
+    };
     renderdetails();
-
-  },[])
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -111,14 +103,13 @@ const Userprof = ({navigation}) => {
                 uri: "https://bootdey.com/img/Content/avatar/avatar1.png",
               }}
             />
-            <Text style={styles.name}>John Doe</Text>
+            <Text style={styles.name}>{name}</Text>
           </View>
         </ImageBackground>
       </View>
 
       <ScrollView contentContainerStyle={styles.body}>
-
-        <View style={styles.inputContainer}>
+        {/* <View style={styles.inputContainer}>
           <View style={styles.iconStyle}>
             <AntDesign name="user" size={20} color="black" />
           </View>
@@ -127,7 +118,7 @@ const Userprof = ({navigation}) => {
             Name{"\n"}
             <Text style={{ fontSize: 16, color: "black" }}> {name}</Text>
           </Text>
-        </View>
+        </View> */}
 
         <View style={styles.inputContainer}>
           <View style={styles.iconStyle}>
@@ -219,7 +210,7 @@ const Userprof = ({navigation}) => {
 
         <View
           style={{
-            flexDirection: "row",
+            flexDirection: 'row',
             padding: 20,
             alignItems: "center",
             alignContent: "center",
@@ -227,32 +218,43 @@ const Userprof = ({navigation}) => {
             paddingTop: 18,
           }}
         >
-          <TouchableOpacity onPress={()=>navigation.navigate('Editprof')}>
+          <TouchableOpacity onPress={() => navigation.navigate("Editprof")}>
             <Button
+            
+            compact={true}
+            mode="elevated"
               style={{
                 borderWidth: 1,
                 borderColor: "black",
-                width: width * 0.35,
-                marginRight: 20,
+                width: width * 0.43,
+                marginRight:10,
+                backgroundColor:'#2E4F4F',
+                
               }}
             >
-              Edit Profile
+             <Text style={{color:'#ffffff', fontSize:12, fontWeight:'600'}}>Edit Profile</Text>
             </Button>
           </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Resetpass")}>
+            <Button style={{ borderWidth: 1, borderColor: "black", width: width * 0.43,  backgroundColor:'#2E4F4F', }} 
+            mode="elevated">
+              <Text style={{color:'#ffffff', fontSize:12, fontWeight:'600'}}>Reset Password</Text>
+            </Button>
+          </TouchableOpacity>
+
+          </View>
+
+         
           <TouchableOpacity onPress={onlogout}>
-            <Button style={{ borderWidth: 1, borderColor: "black" }}>
-              Log out
-            </Button>
+          <View style={{marginTop:40, flexDirection:'row'}}> 
+          <View><Text style={{color:'maroon', fontSize:18}}>Log Out  </Text></View>
+           <View><AntDesign name="logout" size={30} color="maroon"/></View>
+           
+           </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>navigation.navigate("Resetpass")} >
-            <Button style={{ borderWidth: 1, borderColor: "black" }}>
-              Reset Password
-            </Button>
-          </TouchableOpacity>
-        </View>
-
-       
-
+          
+          
+        
       </ScrollView>
       <Bottombar />
     </View>

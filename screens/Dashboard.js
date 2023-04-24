@@ -19,6 +19,8 @@ import Blogspot from "../components/Blogspot";
 import Iconsall from "../components/Iconsall";
 import Journal from "../components/Journal";
 import Therapy from "../components/Therapy";
+import { Url, getToken } from "../components/config";
+import axios from "axios";
 // import { LogBox } from 'react-native';
 
 // LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
@@ -33,34 +35,39 @@ const Dashboard = ({ navigation }) => {
  
   const [loggedin, setLoggedin] = useState(false);
 
-  // useEffect(()=>{
-  //   //AsyncStorage.clear();
-  //   console.log("on dash asfa");
-  //   const onhandlestart=async()=>{
+  const [prog1, setProg1] = useState(0);
 
-  //     const res= await AsyncStorage.getItem('JWT');
-
-  //     if(res!=null){
-  //       console.log("asadsdsdvergt vw weg efg etg ertd gert gf");
-  //       console.log(res);
-  //       //api cl=sll to validate
-  //       setLoggedin(true);
-
-  //     }
-  //     else{
-  //       if(!loggedin){
-  //         console.log('heelo')
-  //         navigation.navigate('Startscrn');
-  //       }
-  //     }
-
-  //  }
-  //   onhandlestart();
-  //   //if(loggedin==false) navigation.navigate('Login');
-
-  // },[])
+    
+  
+    const [prog2, setProg2] = useState(0);
 
   
+
+  useEffect(()=>{
+    const fetchData = async ()=>{
+      try {
+        const token = await getToken();
+        const pid= await AsyncStorage.getItem('PID');
+        console.log(pid)
+        const res = await axios.post(Url+"/patget/status/"+pid,
+        {}, {headers: {
+          Authorization: token,
+        },
+        }
+        
+        );
+        console.log(res.data[0].assig);
+        let p1= (res.data[0].compl)/(res.data[0].assig)
+        let p3= (res.data[1].compl)/(res.data[1].assig)
+        setProg1(p1*100)
+        setProg2(p3*100)
+        console.log(prog1);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  },)
 
   useEffect(() => {
     const backAction = () => {
@@ -91,7 +98,7 @@ const Dashboard = ({ navigation }) => {
       </View>
 
       <ScrollView contentContainerStyle={{ backgroundColor: "#ffffff" }}>
-        <Iconsall />
+        <Iconsall prog1={prog1} prog2={prog2} />
         <View>
           <Assessyourself />
         </View>
@@ -105,7 +112,7 @@ const Dashboard = ({ navigation }) => {
               marginLeft: 18,
               marginTop: 20,
               fontSize: 20,
-              fontWeight: "bold",
+              // fontWeight: "bold",
             }}
           >
             Therapy & Phychiatry
@@ -122,7 +129,7 @@ const Dashboard = ({ navigation }) => {
               marginLeft: 18,
               marginTop: 20,
               fontSize: 20,
-              fontWeight: "bold",
+              // fontWeight: "bold",
             }}
           >
             Your Journal

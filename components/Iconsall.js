@@ -21,38 +21,40 @@ import axios from "axios";
 
 const {width, height} =Dimensions.get('screen');
 
-const Iconsall = () => {
+const Iconsall = (props) => {
 
-    const [progress, setProgress] = useState(30);
+    const [progress, setProgress] = useState(0);
 
-    const [progress1, setProgress1] = useState(50);
+    const {prog1,prog2}= props;
+
+    const [progress1, setProgress1] = useState(0);
   
-    const [progress2, setProgress2] = useState(70);
+    const [progress2, setProgress2] = useState(0);
 
-    useEffect(()=>{
-      const fetchData = async ()=>{
-        try {
-          const token = await getToken();
-          const pid= await AsyncStorage.getItem('PID');
-          console.log(pid)
-          const res = await axios.post(Url+"/patget/status/"+pid,
-          {}, {headers: {
-            Authorization: token,
-          },
-          }
+    // useEffect(()=>{
+    //   const fetchData = async ()=>{
+    //     try {
+    //       const token = await getToken();
+    //       const pid= await AsyncStorage.getItem('PID');
+    //       console.log(pid)
+    //       const res = await axios.post(Url+"/patget/status/"+pid,
+    //       {}, {headers: {
+    //         Authorization: token,
+    //       },
+    //       }
           
-          );
-          console.log(res.data[0].assig);
-          let p1= (res.data[0].compl)/(res.data[0].assig)
-          let p3= (res.data[1].compl)/(res.data[1].assig)
-          setProgress(p1*100)
-          setProgress2(p3*100)
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      fetchData();
-    },[2])
+    //       );
+    //       console.log(res.data[0].assig);
+    //       let p1= (res.data[0].compl)/(res.data[0].assig)
+    //       let p3= (res.data[1].compl)/(res.data[1].assig)
+    //       setProgress(p1*100)
+    //       setProgress2(p3*100)
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   }
+    //   fetchData();
+    // },)
 
     const navigation=useNavigation();
   return (
@@ -61,10 +63,13 @@ const Iconsall = () => {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
         >
-          <View style={{marginLeft:15}}>
-            <TouchableOpacity
+           <TouchableOpacity
               onPress={() => navigation.navigate("Taskmanager")}
+              activeOpacity={.9}
+              
             >
+          <View style={{marginLeft:15}}>
+           
               <Card
                 style={{
                   paddingTop: 3,
@@ -76,6 +81,8 @@ const Iconsall = () => {
                   marginBottom: 10,
                   backgroundColor: "#CCD5AE",
                   flex: 1,
+                  
+                  
                 }}
               >
                 <View style={{ flexDirection: "row" }}>
@@ -92,7 +99,7 @@ const Iconsall = () => {
                   ></Card.Cover>
                   <View style={{ marginLeft: 20, paddingTop: 15 }}>
                     <ProgressCircle
-                      percent={progress}
+                      percent={prog1}
                       radius={40}
                       borderWidth={5}
                       color="#57d83c"
@@ -107,7 +114,7 @@ const Iconsall = () => {
                           fontStyle: "italic",
                         }}
                       >
-                        {progress}%
+                        {prog1}%
                       </Text>
                     </ProgressCircle>
                   </View>
@@ -126,11 +133,13 @@ const Iconsall = () => {
                 </View>
                 <Card.Actions>{/* <button>Ok</button> */}</Card.Actions>
               </Card>
-            </TouchableOpacity>
+            
           </View>
+          </TouchableOpacity>
 
+          <TouchableOpacity onPress={()=>navigation.navigate('Videoscrn') } activeOpacity={.9}>
+            
           <View>
-            <TouchableOpacity onPress={()=>navigation.navigate('Videoscrn')}>
               <Card
                 style={{
                   paddingTop: 3,
@@ -160,7 +169,7 @@ const Iconsall = () => {
                     style={{ paddingLeft: 5, paddingTop: 10, paddingLeft: 20 }}
                   >
                     <ProgressCircle
-                      percent={progress}
+                      percent={prog2}
                       radius={40}
                       borderWidth={5}
                       color="#57d83c"
@@ -175,7 +184,7 @@ const Iconsall = () => {
                           fontStyle: "italic",
                         }}
                       >
-                        {progress2}%
+                        {prog2}%
                       </Text>
                     </ProgressCircle>
                   </View>
@@ -183,11 +192,13 @@ const Iconsall = () => {
                 </View>
                 <Card.Actions>{/* <button>Ok</button> */}</Card.Actions>
               </Card>
-            </TouchableOpacity>
+            
           </View>
+          </TouchableOpacity>
 
+          <TouchableOpacity onPress={()=>navigation.navigate('Audioscrn')} activeOpacity={.9}>
           <View>
-            <TouchableOpacity onPress={()=>navigation.navigate('Audioscrn')}>
+           
               <Card
                 style={{
                   paddingTop: 3,
@@ -244,8 +255,9 @@ const Iconsall = () => {
                 </View>
                 <Card.Actions>{/* <button>Ok</button> */}</Card.Actions>
               </Card>
-            </TouchableOpacity>
+            
           </View>
+          </TouchableOpacity>
 
           
         </ScrollView>

@@ -77,6 +77,7 @@ const Forgotpass = ({navigation}) => {
         />
     <View style={{margin:50}}>
         <FormButton buttonTitle="Send" onPress={onsendhandle} />
+        <FormButton buttonTitle="Cancel" onPress={()=> navigation.navigate('LoginScreen')} />
         </View>
         </View>
       </ImageBackground>

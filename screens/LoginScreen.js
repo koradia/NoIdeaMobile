@@ -43,10 +43,13 @@ const LoginScreen = ({ navigation }) => {
     if (result && result.status == 200) {
       const value = JSON.stringify(result.data.token);
       const id = JSON.stringify(result.data.id);
+      const name = email;
       console.log(result.data);
       try {
         await AsyncStorage.setItem("PID", id);
         await AsyncStorage.setItem("JWT", value);
+        await AsyncStorage.setItem("name", name);
+
         const res = await AsyncStorage.getItem("JWT");
         console.log(JSON.parse(res) + "from login");
         //navigation.navigate('Dashboard');
@@ -54,7 +57,7 @@ const LoginScreen = ({ navigation }) => {
         console.log(err);
       }
       const token= await getToken();
-      console.log(token);
+      //console.log(token);
       
       setEmail("");
       setPassword("");
@@ -122,7 +125,7 @@ const LoginScreen = ({ navigation }) => {
             <FormInput
               labelValue={email}
               onChangeText={(userEmail) => setEmail(userEmail)}
-              placeholderText="Email"
+              placeholderText="Username"
               iconType="user"
               keyboardType="email-address"
               autoCapitalize="none"

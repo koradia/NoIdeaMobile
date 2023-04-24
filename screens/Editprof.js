@@ -1,5 +1,6 @@
 import {
   Image,
+  ImageBackground,
   ScrollView,
   StyleSheet,
   Text,
@@ -30,13 +31,13 @@ const Editprof = ({ navigation }) => {
   const [address, setAddress] = useState();
   const [email, setEmail] = useState();
   const [datePicker, setDatePicker] = useState();
-  const [kg, setKg] = useState(null);
-  const [ht, setHt] = useState(null);
+  const [kg, setKg] = useState();
+  const [ht, setHt] = useState();
   const [gen, setGen] = useState();
   //const [date, setDate] = useState(new Date());
   const [bg, setBg] = useState();
-  const [age,setAge] =useState(null);
-  const [wplace,setWplace] =useState('');
+  const [age,setAge] =useState();
+  const [wplace,setWplace] =useState();
   const [ageplace,setAgeplace] =useState('');
   const [helace,setHeplace] =useState('');
 
@@ -162,7 +163,7 @@ const Editprof = ({ navigation }) => {
         navigation.navigate("Dashboard");
       }
       else{
-        console.log(result.status);
+        //console.log(result.status);
       }
       
 
@@ -172,9 +173,18 @@ const Editprof = ({ navigation }) => {
   return (
     <View>
       <ScrollView>
-        <View>
-          <Appbartab />
-        </View>
+      <ImageBackground
+            source={require('../images/imgbg.jpg')}
+            resizeMode="cover"
+            style={{ flex: 1, justifyContent: "center" }}
+            imageStyle={{
+            width: width,
+           // opacity: 0.25,
+          //  height:height,
+            borderRadius: 5,
+            }}
+        >
+          <View style={{marginTop:80, alignItems:'center'}}><Text style={{color:'maroon', fontSize:22}} >Edit Details</Text></View>
         <View style={{ margin: 20, alignItems: "center", marginTop: 40 }}>
           {/* <View>
             <FormInput
@@ -188,7 +198,7 @@ const Editprof = ({ navigation }) => {
             />
           </View> */}
           <View>
-          <Editinput 
+          {/* <Editinput 
            labelValue={name}
            onChangeText={(userName) => setName(userName)}
            placeholderText="your name"
@@ -196,7 +206,7 @@ const Editprof = ({ navigation }) => {
            keyboardType="address"
            autoCapitalize="none"
            autoCorrect={false}
-         />
+         /> */}
           </View>
           <View>
             <Editinput
@@ -210,7 +220,7 @@ const Editprof = ({ navigation }) => {
             />
           </View>
           <View>
-            <Editinput
+            {/* <Editinput
               labelValue={email}
               onChangeText={(userEmail) => setName(userEmail)}
               placeholderText={email}
@@ -218,7 +228,7 @@ const Editprof = ({ navigation }) => {
               keyboardType="address"
               autoCapitalize="none"
               autoCorrect={false}
-            />
+            /> */}
           </View>
           <View>
             <Editinput
@@ -309,14 +319,14 @@ const Editprof = ({ navigation }) => {
             />
           </View>
 
-          <View style={{ marginBottom: 20, marginTop:10 }}>
+          <View style={{ marginBottom: 120, marginTop:10 }}>
             <FormButton buttonTitle="Save" onPress={onsavehandle} />
+            <FormButton buttonTitle="Cancel" onPress={()=>navigation.navigate('Userprof')} />
           </View>
         </View>
+        </ImageBackground>
       </ScrollView>
-      <View style={{ marginTop: 25 }}>
-        <Bottombar />
-      </View>
+      
     </View>
   );
 };

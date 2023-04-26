@@ -46,12 +46,11 @@ const SignupScreen = ({ navigation }) => {
       password === null ||
       password != confirmPassword
     ) {
-      alert("please fill entire with data");
+      alert("please fill entire with data or password mismatch");
     } else {
       
       e.preventDefault();
       navigation.navigate("Adddetails", {  name, email ,password});
-      
 
       // const token=result.data;
       // localStorage.setItem('jwtToken', token);

@@ -328,7 +328,7 @@ const Audioscrn = () => {
                     </View>
         </View>
 
-        <View
+        {/* <View
           style={{
             flexDirection: "row",
             marginLeft: 10,
@@ -377,6 +377,7 @@ const Audioscrn = () => {
                       Do it for 2-4 min will help you to relax.
                     </Text>
                   </View>
+
                   <View
                     style={{
                       borderWidth: 0,
@@ -421,7 +422,7 @@ const Audioscrn = () => {
                       Do it for 2-4 min will help you to relax.
                     </Text>
                   </View>
-        </View>
+        </View> */}
 
       </ScrollView>
       <View style={{ }}>

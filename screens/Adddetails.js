@@ -1,4 +1,6 @@
 import {
+  Alert,
+  BackHandler,
   Image,
   ScrollView,
   StyleSheet,
@@ -6,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { Component } from "react";
 import FormInput from "../components/FormInput";
 import FormButton from "../components/FormButton";
@@ -54,6 +56,26 @@ const Adddetails = ({ route, navigation }) => {
   const [date, setDate] = useState(new Date());
   const [bg, setBg] = useState(null);
   const [age, setAge]= useState(null);
+
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert('Hold on!', 'Are you sure you want to Exit?', [
+        {
+          text: 'Cancel',
+          onPress: () => null,
+          style: 'cancel',
+        },
+        {text: 'YES', onPress: () => BackHandler.exitApp()},
+      ]);
+      return true;
+    };
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+
+    return () => backHandler.remove();
+  }, []);
 
   const onhandlesubmit = async (e) => {
     if (

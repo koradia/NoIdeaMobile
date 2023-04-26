@@ -106,7 +106,7 @@ const Doctorinfo = ({navigation}) => {
           Chat with Doctor
         </Button>
       </View>
-      <View style={{marginTop:310}}>
+      <View style={{marginTop:305}}>
         <Bottombar />
       </View>
     </View>

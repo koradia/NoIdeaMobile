@@ -119,6 +119,7 @@ const Questionnaire = ({ navigation }) => {
           Questionnaire{"\n"}
         </Text>
         <View style={{ marginLeft: 10, marginRight: 20 }}>
+
                 <View>
                   <View style={{ flexDirection: "row", marginRight: 10 }}>
                     <Text style={{ marginLeft: 3 }}>Q1.{"\n"}</Text>
@@ -140,7 +141,7 @@ const Questionnaire = ({ navigation }) => {
                                     size={25}
                                     color="black"
                                     
-                                    style={{marginTop:0, marginRight:5 }}
+                                    style={{marginTop:0, marginRight:0 }}
                                   />
                                   <View style={{ width: 250, marginTop:5 }}>
                                     <Slider
@@ -188,7 +189,7 @@ const Questionnaire = ({ navigation }) => {
                                     size={25}
                                     color="black"
                                     
-                                    style={{marginTop:0, marginRight:5 }}
+                                    style={{marginTop:0, marginRight:0 }}
                                   />
                                     <View style={{ width: 250, marginTop:5 }}>
                                       <Slider
@@ -258,7 +259,7 @@ const Questionnaire = ({ navigation }) => {
                                     size={25}
                                     color="black"
                                     
-                                    style={{marginTop:0, marginRight:5 }}
+                                    style={{marginTop:0, marginRight:0 }}
                                   />
                                   </View>
                 </View>
@@ -284,7 +285,7 @@ const Questionnaire = ({ navigation }) => {
                                     size={25}
                                     color="black"
                                     
-                                    style={{marginTop:0, marginRight:5 }}
+                                    style={{marginTop:0, marginRight:0 }}
                                   />
                                   <View style={{ width: 250, marginTop:5 }}>
                                     <Slider
@@ -306,7 +307,7 @@ const Questionnaire = ({ navigation }) => {
                                     size={25}
                                     color="black"
                                     
-                                    style={{marginTop:0, marginRight:5 }}
+                                    style={{marginTop:0, marginRight:0 }}
                                   />
                                 </View>
                               </View>
@@ -333,7 +334,7 @@ const Questionnaire = ({ navigation }) => {
                                     size={25}
                                     color="black"
                                     
-                                    style={{marginTop:0, marginRight:5 }}
+                                    style={{marginTop:0, marginRight:0 }}
                                   />
                                     <View style={{ width: 250 , marginTop:5}}>
                                       <Slider
@@ -380,7 +381,7 @@ const Questionnaire = ({ navigation }) => {
                                     size={25}
                                     color="black"
                                     
-                                    style={{marginTop:0, marginRight:5 }}
+                                    style={{marginTop:0, marginRight:0 }}
                                   />
                                     <View style={{ width: 250, marginTop:5 }}>
                                       <Slider
@@ -427,7 +428,7 @@ const Questionnaire = ({ navigation }) => {
                                     size={25}
                                     color="black"
                                     
-                                    style={{marginTop:0, marginRight:5 }}
+                                    style={{marginTop:0, marginRight:0 }}
                                   />
                                   <View style={{ width: 250, marginTop:5 }}>
                                     <Slider
@@ -475,7 +476,7 @@ const Questionnaire = ({ navigation }) => {
                                     size={25}
                                     color="black"
                                     
-                                    style={{marginTop:0, marginRight:5 }}
+                                    style={{marginTop:0, marginRight:0 }}
                                   />
                                       <View style={{ width: 250, marginTop:5 }}>
                                         <Slider
@@ -495,7 +496,7 @@ const Questionnaire = ({ navigation }) => {
                                     size={25}
                                     color="black"
                                     
-                                    style={{marginTop:0, marginRight:5 }}
+                                    style={{marginTop:0, marginRight:0 }}
                                   />
                                     </View>
 
@@ -517,7 +518,7 @@ const Questionnaire = ({ navigation }) => {
         </View>
        
     </ScrollView>
-    <View style={{paddingBottom:10}}>
+    <View style={{paddingBottom:15}}>
     <Bottombar />
     </View>
     

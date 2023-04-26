@@ -21,7 +21,7 @@ const Chatbox = (props) => {
                 margin: 10,
                 //marginLeft: 25,
                 //marginRight: 25,
-                backgroundColor: "#f6e2fe",
+                backgroundColor: "#ffffff",
                 width: width * 0.5,
                 borderBottomRightRadius:50,
                 borderTopLeftRadius:50,

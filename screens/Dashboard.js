@@ -91,7 +91,7 @@ const Dashboard = ({ navigation }) => {
     );
 
     return () => backHandler.remove();
-  }, []);
+  }, );
 
   const arr=["1"];
 

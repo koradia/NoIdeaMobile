@@ -49,7 +49,7 @@ const Browsecomp = (props) => {
 
 
   return (
-    <View style={{marginTop:20, marginLeft:40, marginRight:40, borderWidth:1, padding:20,  borderRadius:20, flexDirection:'row', flex:1, backgroundColor:'#E4D0D0'}}>
+    <View style={{marginTop:20, marginLeft:40, marginRight:40, borderWidth:1, padding:20,  borderRadius:20, flexDirection:'row', flex:1, backgroundColor:'#e7f0f9'}}>
       <View><Text style={{color:'#594545', marginTop:5, width:230}} onPress={() => Linking.openURL(tasklink)}>{text}</Text></View>
       <View style={{}}>
       <Checkbox

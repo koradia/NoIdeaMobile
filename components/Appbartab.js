@@ -69,7 +69,8 @@ const Appbartab = () => {
               source={require('../images/logoori.png')}
             />
             <Text style={styles.text}>Hello {name}</Text>
-            <View style={{flex:1, alignItems:'flex-end'}}>
+            {/* <View style={{flex:1, alignItems:'flex-end'}}>
+            
             <TouchableOpacity onPress={() => {}}>
 
       <Ionicons
@@ -79,7 +80,7 @@ const Appbartab = () => {
           
           style={{marginTop:5, marginRight:20 }}
         />
-        </TouchableOpacity></View>
+        </TouchableOpacity></View> */}
             
             
     </View>

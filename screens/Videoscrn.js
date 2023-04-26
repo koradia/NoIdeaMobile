@@ -10,6 +10,7 @@ import Videocomp from "../components/Videocomp";
 import { Url, getToken } from "../components/config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
+import { ImageBackground } from "react-native";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -47,6 +48,17 @@ const Videoscrn = () => {
       <View>
         <Appbartab />
       </View>
+      <ImageBackground
+            source={require('../images/taskbg.jpg')}
+            resizeMode="cover"
+            style={{ flex: 1, justifyContent: "center" }}
+            imageStyle={{
+            width: width,
+           opacity: 0.7,
+           height:height,
+            borderRadius: 5,
+            }}
+        >
       <ScrollView>
       {videoList.map((ele,index) => (
             
@@ -57,6 +69,7 @@ const Videoscrn = () => {
           ))}
        
       </ScrollView>
+      </ImageBackground>
       <View style={{}}>
         <Bottombar />
       </View>

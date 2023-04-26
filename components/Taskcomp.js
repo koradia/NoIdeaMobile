@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Card, Paragraph, Checkbox } from 'react-native-paper';
 import { CheckBox } from '@rneui/themed';
@@ -51,9 +51,10 @@ const Taskcomp = (props) => {
     <View>
    
     
-    <View style={{marginTop:20, marginLeft:40, marginRight:40, borderWidth:1, padding:20,  borderRadius:20, flexDirection:'row', flex:1, backgroundColor:'#FDE2F3'}}>
-      <View><Text style={{color:'#594545', marginTop:5, width:230}}>{taskText}</Text></View>
-      <View style={{}}>
+    <View style={{marginTop:20, marginLeft:40, marginRight:40, borderWidth:1, padding:20,  borderRadius:20, flexDirection:'row', backgroundColor:'#e7f0f9'}}>
+      <View><Image source={require('../images/target.png')}  style={{width:35, height:35}}/></View>
+      <View><Text style={{color:'#112b48', marginTop:10, width:200, fontSize:13}}> {taskText}</Text></View>
+      <View style={{borderWidth:0}}>
       <Checkbox
                         status={isChecked ? "checked" : "unchecked"}
                         onPress={oncheckhandle}

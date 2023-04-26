@@ -76,7 +76,7 @@ const Journalscrn = ({navigation}) => {
             style={{ flex: 1, justifyContent: "center" }}
             imageStyle={{
             width: width,
-           opacity: 0.5,
+           opacity: 0.2,
            height:height,
             borderRadius: 5,
             }}

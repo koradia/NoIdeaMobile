@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, ImageBackground } from "react-native";
 import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import {
@@ -49,14 +49,26 @@ const Taskmanager = ({ navigation }) => {
     <View>
       <Appbartab />
     </View>
+    <ImageBackground
+            source={require('../images/taskbg.jpg')}
+            resizeMode="cover"
+            style={{ flex: 1, justifyContent: "center" }}
+            imageStyle={{
+            width: width,
+           opacity: 0.4,
+           height:height,
+            borderRadius: 5,
+            }}
+        >
     
-    <Text style={{textAlign:'center',padding:20, fontSize:20, fontWeight:'600', color:'maroon'}}>Daily Tasks</Text>
+    <Text style={{textAlign:'center',padding:20, marginBottom:30, marginTop:20,fontSize:20, fontWeight:'600', color:'#0a1b2e'}}>Daily Tasks</Text>
     <ScrollView>
     {taskList.map((ele,index) => (
            ele.tasktype==1 ? <Taskcomp tid={ele.assignedTask.tid} index={"Task"} taskText={ele.tasktext} isComplete={ele.assignedTask.complete} did={ele.assignedTask.did} /> : <View></View>
             
           ))}
            </ScrollView>
+           </ImageBackground>
       <View style={{}}>
         <Bottombar />
       </View>

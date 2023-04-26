@@ -82,15 +82,16 @@ const Videocomp = (props) => {
     <View>
 
     <View style={{ margin: 20, marginTop:30, alignItems:'center' }}>
-          <View style={{borderWidth:0, backgroundColor:'#dfe9f5', alignItems:'center', width:width*.9, height:height*.3}}>
+          <View style={{borderWidth:0, backgroundColor:'#e7f0f9', alignItems:'center', width:width*.9, height:height*.3, borderRadius:20}}>
              <View style={{ borderWidth: 0, flexDirection: "row", margin:10,flex:1 }}>
-                    <Text style={{ fontSize: 15, fontWeight: "800", marginTop:5, width:220, }}>
+                    <Text style={{ fontSize: 15, fontWeight: "800", marginTop:5, width:220, color:"#610000" }}>
                       {text}
                     </Text>
                     <View style={{  left:15}}>
                       <Checkbox
                         status={isChecked ? "checked" : "unchecked"}
                         onPress={oncheckhandle}
+                        color="#610000"
                       />
                     </View>
              </View>

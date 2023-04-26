@@ -42,14 +42,15 @@ const LoginScreen = ({ navigation }) => {
       });
     if (result && result.status == 200) {
       const value = JSON.stringify(result.data.token);
-      const id = JSON.stringify(result.data.id);
+      const pid = JSON.stringify(result.data.pid);
       const name = email;
+      const did = JSON.stringify(result.data.did);
       console.log(result.data);
       try {
-        await AsyncStorage.setItem("PID", id);
+        await AsyncStorage.setItem("PID", pid);
         await AsyncStorage.setItem("JWT", value);
         await AsyncStorage.setItem("name", name);
-
+        if(did!=null) await AsyncStorage.setItem("DID", did);
         const res = await AsyncStorage.getItem("JWT");
         console.log(JSON.parse(res) + "from login");
         //navigation.navigate('Dashboard');
@@ -61,11 +62,17 @@ const LoginScreen = ({ navigation }) => {
       
       setEmail("");
       setPassword("");
-      navigation.navigate('Dashboard');
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "Dashboard" }],
+      });
     
     } else {
       
-      navigation.navigate("LoginScreen");
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "LoginScreen" }],
+      });
       
     }
 

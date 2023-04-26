@@ -52,8 +52,9 @@ const Journalscrn = ({navigation}) => {
           }}
           )
           //console.log(res.data);
-          setNotelist(res.data);
-          //console.log(notelist);
+          //const r= res.data.reverse();
+          setNotelist(res.data.reverse());
+          
 
         }
         catch(e){
@@ -78,7 +79,7 @@ const Journalscrn = ({navigation}) => {
             fontSize: 25,
           }}
         >
-          Sticky Notes
+          Journal
         </Text>
       </View>
 

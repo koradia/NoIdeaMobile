@@ -10,13 +10,40 @@ import LoginScreen from "../screens/LoginScreen";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationAction } from "@react-navigation/native";
 import Userprof from "../screens/Userprof";
+import { Url, getToken } from "./config";
+import axios from "axios";
 
 const { width, height } = Dimensions.get("screen");
 const BOTTOM_APPBAR_HEIGHT = height * 0.05;
 const MEDIUM_FAB_HEIGHT = width;
 
+
+
 const Bottombar = ({ LoginScreen }) => {
   const navigation = useNavigation();
+
+  const ondoctorhandle1=async(e)=>{
+    e.preventDefault();
+    const token= await getToken();
+    const nav = await axios.post(
+      Url + "/patget/detail",
+      {},
+      {headers: {
+          Authorization: token,
+        },
+      }
+    ).catch((e)=>{
+      console.log(e);
+    })
+    
+    console.log(nav.data.score);
+    if(nav.data.score!=null) navigation.navigate('Chatscrn');
+    else{
+      alert('For chat you need to fill Questionnaire first')
+      navigation.navigate('Questionnaire')
+    } 
+
+  }
 
   return (
     //
@@ -52,12 +79,7 @@ const Bottombar = ({ LoginScreen }) => {
       {/* <Icon icon="shopping-bag" text="" /> */}
 
       <TouchableOpacity
-        onPress={() => {
-          navigation.reset({
-            index: 0,
-            routes: [{ name: "Chatscrn" }],
-          });
-        }}
+        onPress={ondoctorhandle1}
       >
         <Ionicons name="md-chatbox-ellipses-outline" size={25} color="white" />
       </TouchableOpacity>

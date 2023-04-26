@@ -58,7 +58,7 @@ const Forgotpass = ({navigation}) => {
         <FormInput
           labelValue={checkEmail}
           onChangeText={(userEmail) => setCheckEmail(userEmail)}
-          placeholderText="Enter your Email"
+          placeholderText="Enter your Username"
           iconType="user"
           keyboardType="email-address"
           autoCapitalize="none"
@@ -69,7 +69,7 @@ const Forgotpass = ({navigation}) => {
         <FormInput
           labelValue={email}
           onChangeText={(userEmail) => setEmail(userEmail)}
-          placeholderText="Re-Enter your email"
+          placeholderText="Re-Enter your Username"
           iconType="user"
           keyboardType="email-address"
           autoCapitalize="none"

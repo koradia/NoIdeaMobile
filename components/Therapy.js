@@ -26,7 +26,10 @@ const Therapy = () => {
     
     console.log(nav.data.score);
     if(nav.data.score!=null) navigation.navigate('Doctorinfo');
-    else navigation.navigate('Questionnaire')
+    else{
+      alert('Please fill the Questionnaire first')
+      navigation.navigate('Questionnaire')
+    } 
 
   }
 
@@ -46,7 +49,10 @@ const Therapy = () => {
     
     console.log(nav.data.score);
     if(nav.data.score!=null) navigation.navigate('Chatscrn');
-    else navigation.navigate('Questionnaire')
+    else{
+      alert('For chat you need to fill Questionnaire first')
+      navigation.navigate('Questionnaire')
+    } 
 
   }
 

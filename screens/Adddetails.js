@@ -89,7 +89,6 @@ const Adddetails = ({ route, navigation }) => {
         )
         .catch(() => {
           alert("please use different username or wrong email");
-          alert("please use different email");
           setAddress(null);
           setAge(null);
           setBg(null);
@@ -106,6 +105,11 @@ const Adddetails = ({ route, navigation }) => {
       setHt(null);
       setKg(null);
       setPhnumber(null);
+      if (radioButtons[0].selected === true) {
+        radioButtons[0].selected=false
+      } else {
+        radioButtons[1].selected=false
+      }
       console.log(res.data);
       const result = await axios.post(Url + "/pat/savedetail", {
         pid: res.data,

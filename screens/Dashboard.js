@@ -21,10 +21,10 @@ import Journal from "../components/Journal";
 import Therapy from "../components/Therapy";
 import { Url, getToken } from "../components/config";
 import axios from "axios";
-// import { LogBox } from 'react-native';
+import { LogBox } from 'react-native';
 
-// LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
-// LogBox.ignoreAllLogs();//Ignore all log notifications
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
 
 const { width, height } = Dimensions.get("screen");
 
@@ -75,7 +75,7 @@ const Dashboard = ({ navigation }) => {
 
   useEffect(() => {
     const backAction = () => {
-      Alert.alert('Hold on!', 'Are you sure you want to go back?', [
+      Alert.alert('Hold on!', 'Are you sure you want to Exit?', [
         {
           text: 'Cancel',
           onPress: () => null,

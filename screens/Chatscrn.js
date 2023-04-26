@@ -3,6 +3,7 @@ import React, {
   useCallback,
   useState,
   useLayoutEffect,
+  useRef,
 } from "react";
 import {
   View,
@@ -78,6 +79,8 @@ const Chatscrn = () => {
             });
     }
   };
+
+  const scrollViewRef = useRef();
   return (
     // Remove this provider if already registered elsewhere
     // or you have React Navigation set up
@@ -85,7 +88,7 @@ const Chatscrn = () => {
       <View>
         <Appbartab />
       </View>
-      <ScrollView contentContainerStyle={{ }}>
+      <ScrollView snapToEnd={true} >
         {
           messagelist.map((ele,index)=>{
             return <Chatbox int={ele.sentfrom} text={ele.msg} time={ele.sentwhen}/>

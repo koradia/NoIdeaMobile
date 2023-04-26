@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ImageBackground, ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import Appbartab from "../components/Appbartab";
 import FormInput from "../components/FormInput";
@@ -70,6 +70,17 @@ const Journalscrn = ({navigation}) => {
       <View>
         <Appbartab />
       </View>
+      <ImageBackground
+            source={require('../images/jwall.jpg')}
+            resizeMode="cover"
+            style={{ flex: 1, justifyContent: "center" }}
+            imageStyle={{
+            width: width,
+           opacity: 0.5,
+           height:height,
+            borderRadius: 5,
+            }}
+        >
       <View>
         <Text
           style={{
@@ -86,12 +97,12 @@ const Journalscrn = ({navigation}) => {
       
       <View style={{alignItems:'center', }}>
         <TextInput
-          style={{ padding:10, width:330 }}
+          style={{ padding:10, width:330, backgroundColor:'#f4ecfd' }}
           //label="Add it here"
           editable
           multiline
           numberOfLines={4}
-          maxLength={40}
+          maxLength={100}
           placeholder="Add it here"
           value={text}
           onChangeText={(text) => setText(text)}
@@ -116,6 +127,7 @@ const Journalscrn = ({navigation}) => {
           <Text>{"\n"}</Text>
         </View>
       </ScrollView>
+      </ImageBackground>
       <View style={{}} >
       <Bottombar />
       </View> 

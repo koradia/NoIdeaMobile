@@ -87,7 +87,7 @@ const Iconsall = (props) => {
               >
                 <View style={{ flexDirection: "row" }}>
                   <Card.Cover
-                    source={require("../images/task.png")}
+                    source={require("../images/todo.png")}
                     style={{
                       backgroundColor: "#CCD5AE",
                       width: width * 0.26,
@@ -158,9 +158,9 @@ const Iconsall = (props) => {
                     source={require("../images/video1.png")}
                     style={{
                       backgroundColor: "#D9ACF5",
-                      width: width * 0.26,
-                      height: height * 0.12,
-                      marginTop: 0,
+                      width: width * 0.24,
+                      height: height * 0.11,
+                      marginTop: 2,
                       marginLeft: 10,
                       paddingTop: 2,
                     }}
